@@ -1,10 +1,11 @@
-const Workitem  =     require('../schemas/Workitem');
-const mongoose =      require('mongoose');
-const testWorkitems = require('../data/Workitems');
+const WorkObject  =     require('../schemas/Workitem');
+const mongoose =        require('mongoose');
+const testWorkitems =   require('../data/Workitems');
 
 const limit = 1;
 
 function getWorkitems () {
+  let Workitem = WorkObject.Workitem;
   Workitem.find({}).limit(limit).exec(function (err, collection){
       if (collection.length === 0) {
         // iterate over the set of agents for initialization and create entries

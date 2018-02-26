@@ -5,7 +5,7 @@ const mongoose = require("mongoose")
 const uuidv1 =  require('uuid/v1')
 const Schema = mongoose.Schema
 
-const workitemsObject = {
+const workitemObject = {
   itemId: {
     type: String,
     trim: true,
@@ -34,8 +34,8 @@ const workitemsObject = {
   id: { type: String, default: uuidv1() }
 }
 
-const workitemSchema = new Schema(workitemObject, {collection: 'Workitem'})
+const workitemSchema = new Schema(workitemObject, {collection: 'WorkItem'})
 
 let Workitem = mongoose.model('Workitem', workitemSchema)
 
-module.exports = { Workitem, workitemSchema)
+module.exports = { Workitem, workitemSchema }
