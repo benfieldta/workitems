@@ -19,7 +19,7 @@ repository and get the application running. To achieve this, _we will be working
     - For the sake of clarity, this means __you'll be running__ `npm install` __twice__; once inside `server` and another inside `client`. You can do this one at a time, or you can open a second tab in your terminal and run these commands simultaneously on two separate tabs.
 
 1. Once `npm install` is finished in `server`, then
-    1. Create a `.env` file __at the root level_. In this file, add three varibles: `TOKEN=(ask the owner this repo for a token)`,  `DB_URI=mongodb://localhost/strategic-test`, and `TESTING=false`. __Creating a__ `.env` __file with these environment variables is very important__. If you don't have the first two, the server won't start properly.
+    1. Create a `.env` file __at the root level_. In this file, add three varibles: `TOKEN=(ask the owner this repo for a token)`,  `DB_URI=mongodb://localhost:27017/strategic-test`, and `TESTING=false`. __Creating a__ `.env` __file with these environment variables is very important__. If you don't have the first two, the server won't start properly.
     1. __Start MongoDB in your computer__. You can do this by opening a new terminal tab, or window, and running the `mongod` command.
     1. Once Mongo is running, run `npm start` __inside the__ `server` __directory__. This will start the server.
 1. In `client`, all you have to do is run `npm start` once `npm install` is done. This will automatically open the application on your browser.

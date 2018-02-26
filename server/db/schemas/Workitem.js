@@ -1,10 +1,11 @@
 //////////////////////////////////////////////////////////////////////////
 ////////////////////        Workitems Schema        /////////////////////
 ////////////////////////////////////////////////////////////////////////
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 const uuidv1 =  require('uuid/v1')
+const Schema = mongoose.Schema
 
-const workitemsSchema = mongoose.Schema({
+const workitemsObject = {
   itemId: {
     type: String,
     trim: true,
@@ -31,6 +32,10 @@ const workitemsSchema = mongoose.Schema({
   },
   PostDate: { type: Date, default: Date.now },
   id: { type: String, default: uuidv1() }
-})
+}
 
-module.exports = mongoose.model('Workitems', workitemsSchema);
+const workitemSchema = new Schema(workitemObject, {collection: 'Workitem'})
+
+let Workitem = mongoose.model('Workitem', workitemSchema)
+
+module.exports = { Workitem, workitemSchema)

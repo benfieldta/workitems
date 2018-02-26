@@ -2,8 +2,7 @@ const mongoose =            require('mongoose');
 const initializeWorkitems = require('./initilialize/getWorkItems');
 
 let options = {
-  useMongoClient: true,
-  poolSize: 10, // Maintain up to 10 socket connections
+  poolSize: 10 // Maintain up to 10 socket connections
 };
 
 module.exports = function (dbURI) {
