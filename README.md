@@ -1,4 +1,11 @@
-# Workitems Repos & Issues
+# Work Items
+
+## Overview
+
+Strategic Machines connects businesses to the conversational economy. The marketplace is where compelling conversations are built.
+
+This applications displays work items posted to the marketplace of Strategic Machines. The marketplace repos contain a variety of applications supporting customer messaging activity. The work items are active 'micro projects', available for developers, designers and software quality engineers to address. The market is dynamic, and is part of a closed membership network attracting top developers for highly strategic projects for clients
+
 
 ## Getting set up and running.
 Here are _detailed instructions_ on how to download this
