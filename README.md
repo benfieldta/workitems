@@ -8,6 +8,7 @@ This applications displays work items posted to the marketplace of Strategic Mac
 
 
 ## Getting set up and running.
+
 Here are _detailed instructions_ on how to download this
 repository and get the application running. To achieve this, _we will be working heavily in the terminal_. Below you'll find a general overview of the application's __expected behavior__.
 
@@ -24,10 +25,12 @@ repository and get the application running. To achieve this, _we will be working
 1. In `client`, all you have to do is run `npm start` once `npm install` is done. This will automatically open the application on your browser.
 
 ## A note on expected behavior.
+
 The application is a working prototype, and is thus tailored to retrieve and render data from GitHub repositories and issues for __this account only__. If you wish to fetch and render repositories from another GitHub account, you may do so by making a
 slight change in the source code; however, you will not be able to see each repository's issues (assuming there are any). This is because in order for issues to be rendered, they need to be matched with documents in the database; that is to say, if there's not a document (in the database) for each issue retrieved from GitHub, there will be no match and the issue won't be rendered. When you start the server, data will be automatically initialized into MongoDB; however, this data currently only matches issues in this repository. This behavior may or may not change in future versions of this application. For now, just keep in mind its present limitations.
 
 ### Fetching repos for another GitHub User
+
 There's a file named `ReposPage.js` in the `client` directory. The path to this file is the following: `client/src/components/ReposPage.js`. <br /><br />
 __On line 13__, inside the component's state, _change the value of user_ to fetch repositories of another GitHub user. Like so:
 ```javascript
