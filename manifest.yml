@@ -1,0 +1,9 @@
+applications:
+-       name: chaoticsms
+        host: chaoticsms
+        buildpack: https://github.com/cloudfoundry/nodejs-buildpack
+        memory: 512M
+        instances: 1
+        domain: mybluemix.net
+        path: .
+        command: npm run chaotic
