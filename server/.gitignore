@@ -1,0 +1,8 @@
+.env
+node_modules
+app-test.js
+/api/v1
+/api/v2/tests.js
+/for_later
+issues.js
+.vscode

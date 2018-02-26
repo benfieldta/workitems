@@ -1,0 +1,107 @@
+.app-header {
+  text-align: center;
+  background-color: #222;
+  padding: 20px;
+  color: #eee;
+}
+
+.header-title {
+  font-size: 1.5em;
+}
+
+.app-content {
+  font-size: large;
+  padding: 2em;
+}
+
+.app-footer {
+  text-align: center;
+  background-color: #222;
+  color: #eee;
+  padding: 10px;
+}
+
+.repo, .issue {
+  margin: 10px;
+}
+
+#repos-content {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  /* justify-content: center; */
+  list-style: none;
+}
+
+#repos-content .repo-card {
+  width: 18rem;
+  padding: 10px;
+  max-height: 135px;
+  min-height: 135px;
+  font-size: 14px;
+}
+
+#repos-content .repo-title {
+  text-decoration: none;
+}
+
+#repos-content .repo-card-footer {
+  background: #222;
+}
+
+#repos-content .repo-view-issues {
+  color: #eee;
+}
+
+#repos-content 
+.repo-view-issues:hover {
+  color: rgba(238, 238, 238, 0.63);
+}
+
+#issue-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 auto;
+}
+
+#issue-list li {
+  max-width: 25%;
+  flex: 0 1 25%;
+  margin: 10px 0px; /* fits 4 into one line */
+}
+
+#issue-list .issue-card {
+  width: 18rem;
+  padding: 10px;
+  background: #eee;
+}
+
+#issue-list .issue-title {
+  font-size: 17px;
+}
+
+#issue-list .issue-price {
+  color: green;
+  font-weight: bold;
+  padding: 3px;
+  font-size: 14px;
+}
+
+#issue-list .issue-assignee {
+  font-size: 14px;
+}
+
+#issue-list .issue-due-date,
+.issue-card-footer {
+  font-size: 12px
+}
+
+#issue-list .issue-card-footer {
+  background: none;
+}
+
+.issue {
+  width: 100px;
+}

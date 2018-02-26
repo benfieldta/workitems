@@ -1,0 +1,53 @@
+{
+    "username": "jsdev17",
+    "repos": [
+      {
+        "name": "reservations",
+        "issues_count": "6"
+      },
+      {
+        "name": "customer-service",
+        "issues_count": "9"
+      },
+      {
+        "name": "issues",
+        "issues_count": "20"
+      },
+      {
+        "name": "retail",
+        "issues_count": "2"
+      },
+      {
+        "name": "test-a",
+        "issues_count": "15"
+      },
+      {
+        "name": "test-b",
+        "issues_count": "15"
+      },
+      {
+        "name": "test-c",
+        "issues_count": "15"
+      },
+      {
+        "name": "test-d",
+        "issues_count": "15"
+      },
+      {
+        "name": "test-e",
+        "issues_count": "15"
+      },
+      {
+        "name": "test-f",
+        "issues_count": "15"
+      },
+      {
+        "name": "test-g",
+        "issues_count": "15"
+      },
+      {
+        "name": "wholesale",
+        "issues_count": "9"
+      }
+    ]
+}
