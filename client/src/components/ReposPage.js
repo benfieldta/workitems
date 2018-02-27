@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Repo from './Repo';
 import SearchBar from './SearchBar';
+import { repos_url } from '../config/config.json';
 
 export default class ReposPage extends Component {
   constructor(props) {
@@ -11,7 +12,6 @@ export default class ReposPage extends Component {
     this.state = {
       repos: [],
       loaded: false,
-      user: 'jsdev17',
       search: ''
     }
     // bind constructor's 'this' object to handleChange method
@@ -20,10 +20,8 @@ export default class ReposPage extends Component {
   };
 
   componentDidMount() {
-    let user = this.state.user;
-    let url = `http://localhost:3005/api/github/${user}/repos`;
     // Fetch repositories for given user
-    axios.get(url)
+    axios.get(repos_url)
       .then(res => {
         // Save data to state
         this.setState({
