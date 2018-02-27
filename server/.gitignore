@@ -1,8 +1,4 @@
 .env
 client/node_modules
 server/node_modules
-/api/v1
-/api/v2/tests.js
-/for_later
-issues.js
 .vscode
