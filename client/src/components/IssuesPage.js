@@ -5,6 +5,7 @@ import axios from 'axios';
 import Issue from './Issue';
 import Navigation from './Navigation';
 import FilterBy from './IssuesFilterBy';
+import SearchBar from './SearchBar'
 
 export default class IssuesPage extends Component {
   constructor(props) {
@@ -14,16 +15,19 @@ export default class IssuesPage extends Component {
       repo: this.props.match.params.repo,
       loaded: false,
       criteria: 'open',
+      search: '',
       issues: []
     }
     // Bind `this` to these methods so they can access state
     this.renderPage = this.renderPage.bind(this);
     this.handleCriteriaChange = this.handleCriteriaChange.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
   }
 
   componentDidMount() {
-    let url =
-        `http://localhost:3005/api/github/${this.state.username}/${this.state.repo}/issues`;
+    let username = this.state.username;
+    let repo = this.state.repo;
+    let url = `http://localhost:3005/api/github/${username}/${repo}/issues`;
     // Fetch issues for repo and save them into state
     axios.get(url)
     .then(res => {
@@ -36,35 +40,31 @@ export default class IssuesPage extends Component {
 
   renderPage() {
     var issues;
-    // Render issues based on current filtering criteria.
-    // If there are no issues under such criteria, display
-    // a message stating that no issues were found.
+    // Filter issues based on *search criteria*
+    var filteredIssues = this.state.issues.filter(issue => (
+      issue.title.toLowerCase().includes(this.state.search)
+    ));
+    // Create issue components based on current *filtering criteria*.
     if (this.state.criteria === 'open') {
-        issues = this.state.issues.filter(issue => issue.stage === 'open');
-        return issues.length > 0 ? (
-          issues = issues.map(issue => <Issue key={issue.number} issue={issue} />)
-        ) : (
-          <p>No {this.state.criteria} issues found</p>
-        )
+        issues = filteredIssues.filter(issue => issue.stage === 'open');
+        issues = issues.map(issue => <Issue key={issue.number} issue={issue} />)
     } else if (this.state.criteria === 'active') {
-        issues = this.state.issues.filter(issue => issue.stage === 'active');
-        return issues.length > 0 ? (
-          issues = issues.map(issue => <Issue key={issue.number} issue={issue} />)
-        ) : (
-          <p>No {this.state.criteria} issues found</p>
-        )
+        issues = filteredIssues.filter(issue => issue.stage === 'active');
+        issues = issues.map(issue => <Issue key={issue.number} issue={issue} />)
     } else if (this.state.criteria === 'closed') {
-        issues = this.state.issues.filter(issue => issue.stage === 'closed');
-        return issues.length > 0 ? (
-          issues = issues.map(issue => <Issue key={issue.number} issue={issue} />)
-        ) : (
-          <p>No {this.state.criteria} issues found</p>
-        )
+        issues = filteredIssues.filter(issue => issue.stage === 'closed');
+        issues = issues.map(issue => <Issue key={issue.number} issue={issue} />)
     }
+    // If there's issues to display, render them. Otherwise, render message.
+    return issues.length > 0 ? issues : <p>No {this.state.criteria} issues found</p>;
   };
 
   handleCriteriaChange(criteria) {
     this.setState({criteria: criteria});
+  }
+
+  updateSearch(event) {
+    this.setState({search: event.target.value});
   }
 
   render() {
@@ -76,6 +76,10 @@ export default class IssuesPage extends Component {
         <FilterBy
           criteria={this.state.criteria}
           handleCriteriaChange={this.handleCriteriaChange}
+        />
+        <SearchBar
+          value={this.state.search}
+          updateSearch={this.updateSearch}
         />
         <ul id="issue-list" className="">
           {this.state.loaded ? this.renderPage() : null}

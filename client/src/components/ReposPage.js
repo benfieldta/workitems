@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Repo from './Repo';
+import SearchBar from './SearchBar';
 
 export default class ReposPage extends Component {
   constructor(props) {
@@ -10,12 +11,17 @@ export default class ReposPage extends Component {
     this.state = {
       repos: [],
       loaded: false,
-      user: 'jsdev17'
+      user: 'jsdev17',
+      search: ''
     }
+    // bind constructor's 'this' object to handleChange method
+    // so that it can access and alter state.
+    this.updateSearch = this.updateSearch.bind(this);
   };
 
   componentDidMount() {
-    let url = `http://localhost:3005/api/github/${this.state.user}/repos`;
+    let user = this.state.user;
+    let url = `http://localhost:3005/api/github/${user}/repos`;
     // Fetch repositories for given user
     axios.get(url)
       .then(res => {
@@ -36,21 +42,33 @@ export default class ReposPage extends Component {
   }
 
   renderPage() {
-    // First check if data has been loaded into state.
-    // After it's been loaded, check if there are repos
-    // (the API will only return repos with issues).
-    // If state.repos[] is empty, display a message. 
-    // Otherwise, render repos.
+    // Check if data has been loaded into state
+    // * Server ONLY returns repos with issues. *
     if(this.state.loaded) {
+      // If there's repos, render them.
       if(this.state.repos.length > 0) {
-        let repos = this.state.repos.map(repo => <Repo key={repo.id} repo={repo}/>);
+        // Filter repos based on *search criteria*
+        let filteredRepos = this.state.repos.filter(repo => (
+          repo.name.toLowerCase().includes(this.state.search)
+        ));
+        let repos = filteredRepos.map(repo => <Repo key={repo.id} repo={repo}/>);
         return repos;
       } else {
+        // If there aren't repo to display, don't even bother
+        // with more operations and just display a message
         return (
-          <p> Did not find repositories with issues for user <strong>{this.state.user}</strong>...</p>
+          <p>
+            Did not find repositories with issues for user <strong>{this.state.user}</strong>...
+          </p>
         )
       }
     }
+  }
+
+  updateSearch(event) {
+    // When state changes, render will be triggered.
+    // results will be displayed according to search value
+    this.setState({search: event.target.value});
   }
 
   render() {
@@ -64,6 +82,10 @@ export default class ReposPage extends Component {
               this.showReposCount() : null
           }
         </span>
+
+        <SearchBar value={this.state.search}
+          updateSearch={this.updateSearch}
+        />
 
         <ul id="repos-content">
           {this.renderPage()}
