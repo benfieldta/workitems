@@ -34,9 +34,9 @@ export default class ReposPage extends Component {
   showReposCount() {
     // Determines proper grammar based on number of repos available
     return this.state.repos.length > 1 ?
-      `${this.state.repos.length} repositories available for user ${this.state.user}`
+      `${this.state.repos.length} repositories available`
       :
-      `${this.state.repos.length} repository available for user ${this.state.user}`
+      `${this.state.repos.length} repository available`
   }
 
   renderPage() {

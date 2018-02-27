@@ -1,0 +1,6 @@
+{
+  "db": {
+    "uri": "mongodb://localhost/strategic-test"
+  },
+  "port": 3005
+}
