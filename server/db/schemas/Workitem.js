@@ -11,6 +11,7 @@ const workitemObject = {
     trim: true,
     required: true
   },
+  repo: String,
   description: String,
   price: Number,
   currency: String,
