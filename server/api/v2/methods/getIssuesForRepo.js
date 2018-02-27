@@ -2,7 +2,7 @@ var GitHubAPI = require('github');
 var github = new GitHubAPI();
 var getNextPage = require('./getNextPage');
 var traverse = require('./traverse');
-var set_price_stage_and_due_date = require('./setPriceStageAndDueDate');
+var set_price_and_others = require('./setPriceAndOthers');
 require('dotenv').load();
 
 github.authenticate({
@@ -45,7 +45,6 @@ module.exports = async function (username, repo, per_page = 100) {
       });
     }
     // Grabs additional info from database and assign it
-    // issues = await Promise.all(issues.map(issue => set_price_stage_and_dude_date(issue, repo)));
-    issues = await set_price_stage_and_due_date(issues, repo);
+    issues = await set_price_and_others(issues, repo);
     return issues;
 }
