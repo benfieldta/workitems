@@ -1,6 +1,8 @@
 {
+  "token": "",
   "db": {
     "uri": "mongodb://localhost/strategic-test"
   },
-  "port": 3005
+  "port": 3005,
+  "testing": false
 }
