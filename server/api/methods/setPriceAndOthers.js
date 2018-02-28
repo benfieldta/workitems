@@ -1,9 +1,9 @@
 const moment = require('moment');
-const { Workitem } = require('../../../db/schemas/Workitem');
+const { Workitem } = require('../../db/schemas/Workitem');
 
 module.exports = async function(issues, repo) {
   // Get all workitems for repo from db
-  var data = await Workitem.find({repo: repo}).lean();
+  let data = await Workitem.find({repo: repo}).lean();
   /* 
     Iterate through issues and:
       1. find the workitem with matching issue number

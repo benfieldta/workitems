@@ -1,9 +1,10 @@
-var GitHubAPI = require('github');
-var github = new GitHubAPI();
-var getNextPage = require('./getNextPage');
-var traverse = require('./traverse');
-var set_price_and_others = require('./setPriceAndOthers');
+const GitHubAPI = require('github');
+const github = new GitHubAPI();
+const getNextPage = require('./getNextPage');
+const traverse = require('./traverse');
+const set_price_and_others = require('./setPriceAndOthers');
 require('dotenv').load();
+// var { token } = require('../../config').init();
 
 github.authenticate({
     type: 'oauth',
@@ -15,7 +16,7 @@ module.exports = async function (username, repo, per_page = 100) {
     // Make initial call; get up to 100 issues for repo.
     // If there's an error, log it. If there's more than
     // 100 issues in this repo, initial call WILL NOT get them all
-    var result = await github.issues.getForRepo({
+    let result = await github.issues.getForRepo({
         owner: username,
         repo: repo,
         state: 'open',
@@ -23,7 +24,7 @@ module.exports = async function (username, repo, per_page = 100) {
         per_page: per_page
     }).catch(err => { throw err });
     // Declare global variable to store issues data
-    var issues;
+    let issues;
     if(!result.meta.link) {
       // if there's NO link header, it means
       // that there are NO pages to traverse.

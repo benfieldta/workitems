@@ -1,7 +1,8 @@
-var GitHubAPI = require('github');
-var github = new GitHubAPI();
-var getNextPage = require('./getNextPage');
+const GitHubAPI = require('github');
+const github = new GitHubAPI();
+const getNextPage = require('./getNextPage');
 require('dotenv').load();
+// var { token } = require('../../config').init();
 
 github.authenticate({
   type: 'oauth',
@@ -12,12 +13,12 @@ module.exports = async function (specs) {
   data = specs.data;
   // we always start at the first page so,
   // initially, nextPage will ALWAYS be 2
-  var nextPage = 2;
-  var num_of_pages = parseInt(github.hasLastPage(specs.link).match(/&page=(\d{1,})/)[1]);
+  let nextPage = 2;
+  let num_of_pages = parseInt(github.hasLastPage(specs.link).match(/&page=(\d{1,})/)[1]);
   console.log(`We have retrieved ${data.length} ${specs.type} thus far...
       At a rate of ${specs.per_page} ${specs.type} per_page, there are ${num_of_pages-1} more pages to traverse
   `);
-  var more;
+  let more;
   // This while loop traverses through however
   // many pages there are available. The number of
   // pages available is determined by the total amount

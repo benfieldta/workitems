@@ -1,5 +1,5 @@
 import test from 'tape';
-import api from '../api/v2/index';
+import api from '../api/index';
 import dataset from './test-dataset.json';
 import mongoose from 'mongoose';
 const db = mongoose.connection;

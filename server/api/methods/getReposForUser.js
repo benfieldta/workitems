@@ -1,9 +1,10 @@
-var GitHubAPI = require('github');
-var github = new GitHubAPI();
-var getIssues = require('./getIssuesForRepo');
-var cleanUp = require('./cleanUpObj');
-var traverse = require('./traverse');
+const GitHubAPI = require('github');
+const github = new GitHubAPI();
+const getIssues = require('./getIssuesForRepo');
+const cleanUp = require('./cleanUpObj');
+const traverse = require('./traverse');
 require('dotenv').load();
+// const { token } = require('../../config').init();
 
 github.authenticate({
     type: 'oauth',
@@ -14,13 +15,13 @@ async function getReposForUser(username, per_page = 100) {
     // Make initial call; get (up to) 100 repos for this user
     // If there's an error, log it. If there's more than 100,
     // initial call WILL NOT get all repos
-    var result = await github.repos.getForUser({
+    let result = await github.repos.getForUser({
         username: username,
         per_page: per_page,
         direction: 'asc'
     }).catch(err => { throw err });
     // Declare global variable to store repos data
-    var repos;
+    let repos;
     if(!result.meta.link) {
       // if there's NO link header, it means
       // that there are NO pages to traverse.
@@ -42,7 +43,7 @@ async function getReposForUser(username, per_page = 100) {
     }
 
      // Only keep repositories that have issues
-     var repos = repos.filter(repo => repo.open_issues_count !== 0);
+     repos = repos.filter(repo => repo.open_issues_count !== 0);
      console.log(`${repos.length} repos left after filtering out ones without issues`);
      // Remove excess data from repo objects
      repos = repos.map(repo => cleanUp(repo));

@@ -1,4 +1,4 @@
-const api = require('../api/v2/index');
+const api = require('../api/index');
 
 const issues = (router) => {
   // Fetches issues of specified repository

@@ -1,4 +1,4 @@
-const api = require('../api/v2/index');
+const api = require('../api/index');
 
 const repos = (router) => {
   // Fetches all repositories, WITH ISSUES, of a specified user.

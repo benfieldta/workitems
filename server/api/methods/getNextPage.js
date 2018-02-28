@@ -1,6 +1,7 @@
-var GitHubAPI = require('github');
-var github = new GitHubAPI();
+const GitHubAPI = require('github');
+const github = new GitHubAPI();
 require('dotenv').load();
+// const { token } = require('../../config').init();
 
 github.authenticate({
   type: 'oauth',
@@ -8,7 +9,7 @@ github.authenticate({
 });
 
 module.exports = async function (specs, next) {
-  var nextPage;
+  let nextPage;
   // Determine whether to fetch next page of repos or issues
   console.log(`fetching ${specs.type}...`);
   if(specs.type === 'repos') {
