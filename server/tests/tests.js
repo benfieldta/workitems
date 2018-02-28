@@ -3,9 +3,8 @@ import api from '../api/v2/index';
 import dataset from './test-dataset.json';
 import mongoose from 'mongoose';
 const db = mongoose.connection;
-process.env.TESTING = true;
-// import dbData from '../db/data/workitems'
-// import getExtra from '../api/v2/methods/getPriceStageAndDueDate';
+import config from '../config/config.json';
+config.testing = true;
 
 test('Verifying getReposForUser([username]) returns expected # of repos', (t) => {
   const isArray = true;
@@ -28,7 +27,7 @@ test('Verifying getReposForUser([username]) returns expected # of repos', (t) =>
 // to the database. process.env.TESTING will be true
 // when the server isn't running. We set it this way
 // so that we can run tests without relying on the server.
-if(process.env.TESTING) {
+if(config.testing) {
   // When process.env.TESTING is set to true, establish a 
   // connection to the database to allow tests.
   mongoose.connect(process.env.DB_URI)
@@ -51,5 +50,5 @@ if(process.env.TESTING) {
 
   // When tests are over, close db connection.
   db.close();
-  process.env.TESTING = false;
+  config.testing = false;
 }
