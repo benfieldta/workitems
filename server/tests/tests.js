@@ -23,13 +23,8 @@ test('Verifying getReposForUser([username]) returns expected # of repos', (t) =>
   t.end();
 });
 
-// For the following series of tests, we need access
-// to the database. process.env.TESTING will be true
-// when the server isn't running. We set it this way
-// so that we can run tests without relying on the server.
+// For the following series of tests, we need access to the database.
 if(config.testing) {
-  // When process.env.TESTING is set to true, establish a 
-  // connection to the database to allow tests.
   mongoose.connect(process.env.DB_URI)
   db.on('error', console.error.bind(console, 'connection error...'));
   db.once('open', function() {
