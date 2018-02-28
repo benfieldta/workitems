@@ -1,6 +1,6 @@
 const WorkObject  =     require('../schemas/Workitem');
 const mongoose =        require('mongoose');
-const testWorkitems =   require('../data/Workitems');
+const testWorkitems =   require('../data/workitems');
 
 const limit = 1;
 
