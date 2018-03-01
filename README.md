@@ -20,7 +20,7 @@ repository and get the application running. On the section after this one you'll
 
 1. Once `npm install` is finished running in the `server` directory, then
     1. At the root level, __change the name of the__ `configEx` __directory to__ `config`.
-      1. Go into `config.json` and paste an authentication token inside the empty string. A token will be provided by one of the organization's admin upon request. __Without a token, the application won't work__.
+    1. Go into `config.json` and paste an authentication token inside the empty string. A token will be provided by one of the organization's admin upon request. __Without a token, the application won't work__.
     1. Create a `.env` file __at the root level__. In this file, paste the following variable: `TESTING=false`. This variable will be useful when running tests.
     1. Start MongoDB in your computer. You can do this by opening a new terminal tab, or window, and running the `mongod` command. __Make sure MongoDB is running before starting the server__.
     1. Once Mongo is running, run `npm start` __inside the__ `server` __directory__. This will start the server.
