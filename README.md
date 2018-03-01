@@ -10,7 +10,7 @@ This applications displays work items posted to the marketplace of Strategic Mac
 ## Getting set up and running.
 
 Here are _detailed instructions_ on how to clone this
-repository and get the application running. On the section below you'll find a general overview of the application's __current expected behavior__.
+repository and get the application running. On the section after this one you'll find a general overview of the application's __current expected behavior__.
 
 1. In your computer's terminal, navigate to the directory of your choice and clone this repository.
     - When you're in the directory of your choice, paste this command into your terminal: `git clone https://github.com/strategicmarket/workitems.git` then hit `Enter`.
