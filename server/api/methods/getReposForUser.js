@@ -3,12 +3,12 @@ const github = new GitHubAPI();
 const getIssues = require('./getIssuesForRepo');
 const cleanUp = require('./cleanUpObj');
 const traverse = require('./traverse');
-require('dotenv').load();
-// const { token } = require('../../config').init();
+// require('dotenv').load();
+const { token } = require('../../config').init();
 
 github.authenticate({
     type: 'oauth',
-    token: process.env.TOKEN
+    token: token
 });
 
 async function getReposForUser(username, per_page = 100) {

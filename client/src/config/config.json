@@ -1,3 +1,4 @@
 {
-  "repos_url": "http://localhost:3005/api/github/repos/jsdev17"
+  "repos_url": "http://localhost:3005/api/github/repos/jsdev17",
+  "issues_url": "http://localhost:3005/api/github/issues/jsdev17"
 }

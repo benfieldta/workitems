@@ -3,12 +3,12 @@ const github = new GitHubAPI();
 const getNextPage = require('./getNextPage');
 const traverse = require('./traverse');
 const set_price_and_others = require('./setPriceAndOthers');
-require('dotenv').load();
-// var { token } = require('../../config').init();
+// require('dotenv').load();
+var { token } = require('../../config').init();
 
 github.authenticate({
     type: 'oauth',
-    token: process.env.TOKEN
+    token: token
 });
 
 // Method retrieves all issues for a repo.

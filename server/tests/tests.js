@@ -3,8 +3,7 @@ import api from '../api/index';
 import dataset from './test-dataset.json';
 import mongoose from 'mongoose';
 const db = mongoose.connection;
-import config from '../config/config.json';
-config.testing = true;
+process.env.TESTING = true;
 
 test('Verifying getReposForUser([username]) returns expected # of repos', (t) => {
   const isArray = true;
@@ -24,7 +23,7 @@ test('Verifying getReposForUser([username]) returns expected # of repos', (t) =>
 });
 
 // For the following series of tests, we need access to the database.
-if(config.testing) {
+if(process.env.TESTING) {
   mongoose.connect(process.env.DB_URI)
   db.on('error', console.error.bind(console, 'connection error...'));
   db.once('open', function() {
@@ -45,5 +44,5 @@ if(config.testing) {
 
   // When tests are over, close db connection.
   db.close();
-  config.testing = false;
+  process.env.TESTING = false;
 }

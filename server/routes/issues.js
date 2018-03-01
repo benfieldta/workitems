@@ -6,7 +6,7 @@ const issues = (router) => {
     let username = req.params.username,
       repo = req.params.repo;
     api.getIssuesForRepo(username, repo).then(function(issues) {
-      console.log('request received...');
+      console.log(`request received, returning issues for repo ${repo}...`);
       res.json(issues);
       next();
     }).catch(function(error) {

@@ -5,13 +5,13 @@ import axios from 'axios';
 import Issue from './Issue';
 import Navigation from './Navigation';
 import FilterBy from './IssuesFilterBy';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
+import { issues_url } from '../config/config.json';
 
 export default class IssuesPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: this.props.match.params.user,
       repo: this.props.match.params.repo,
       loaded: false,
       criteria: 'open',
@@ -25,11 +25,10 @@ export default class IssuesPage extends Component {
   }
 
   componentDidMount() {
-    let username = this.state.username;
     let repo = this.state.repo;
-    let url = `http://localhost:3005/api/github/issues/${username}/${repo}`;
+    let endpoint = `${issues_url}/${repo}`;
     // Fetch issues for repo and save them into state
-    axios.get(url)
+    axios.get(endpoint)
     .then(res => {
       this.setState({
         issues: res.data,

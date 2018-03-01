@@ -5,7 +5,7 @@ const repos = (router) => {
   router.get('/:username', (req, res, next) => {
     let username = req.params.username;
     api.getReposForUser(username).then(function(repos) {
-      console.log('request received...');
+      console.log(`request received, returning repos for user ${username}...`);
       res.json(repos);
       next()
     }).catch(function(error) {

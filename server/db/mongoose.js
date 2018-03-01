@@ -6,8 +6,9 @@ let options = {
 };
 
 module.exports = function (dbURI) {
+  process.env.TESTING = false;
   mongoose.Promise = global.Promise;
-  mongoose.connect(dbURI, options)
+  mongoose.connect(dbURI, options);
   const db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error...'));
   db.once('open', function callback() {

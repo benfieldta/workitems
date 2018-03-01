@@ -1,12 +1,12 @@
 const GitHubAPI = require('github');
 const github = new GitHubAPI();
 const getNextPage = require('./getNextPage');
-require('dotenv').load();
-// var { token } = require('../../config').init();
+// require('dotenv').load();
+var { token } = require('../../config').init();
 
 github.authenticate({
   type: 'oauth',
-  token: process.env.TOKEN
+  token: token
 });
 
 module.exports = async function (specs) {

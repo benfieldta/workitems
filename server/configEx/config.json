@@ -1,5 +1,5 @@
 {
-  "token": "4064201a36cdd38b9967af2707a13f72c512dd5b",
+  "token": "",
   "db": {
     "uri": "mongodb://localhost/strategic-test"
   },
