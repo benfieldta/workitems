@@ -1,7 +1,0 @@
-{
-  "token": "4064201a36cdd38b9967af2707a13f72c512dd5b",
-  "db": {
-    "uri": "mongodb://localhost/strategic-test"
-  },
-  "port": 3005
-}
